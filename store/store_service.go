@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-redis/redis"
+	"github.com/redis/go-redis/v9"
 )
 
 // Define the struct wrapper around raw redis client
@@ -50,7 +50,7 @@ func SaveUrlMapping(shortUrl string, originalUrl string, userId string) {
 
 // retrieve the initial long url once the short is provided and users will call it
 func RetrieveInitialUrl(shortUrl string) string {
-	result, err := storeService.redisClient.Get(ctx, shortUrl).err()
+	result, err := storeService.redisClient.Get(ctx, shortUrl).Result()
 	if err != nil {
 		panic(fmt.Sprintf("Failed RetrieveInitialUrl url | Error: %v - shortUrl: %s\n", err, shortUrl))
 	}
