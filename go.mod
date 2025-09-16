@@ -1,4 +1,4 @@
-module github.com/pablomoreno10/url-shortener
+module github.com/pablomoreno10/url
 
 go 1.22.2
 
